@@ -90,7 +90,6 @@ app.get("/ip-info", async (c) => {
         const info = {
             "asn": cf.asn,
             "asnName": cf.asOrganization,
-            "bot": (cf.botManagement as IncomingRequestCfPropertiesBotManagementBase).score,
             "country": cf.country,
             "loc": cf.city + ", " + cf.regionCode,
             "tz": cf.timezone,

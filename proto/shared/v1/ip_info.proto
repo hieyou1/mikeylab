@@ -40,7 +40,6 @@ message IpInfo {
   string country = 10;
   HttpVersion http = 11;
   TlsVersion tls = 12;
-  uint32 bot = 13;
 }
 
 message IpInfoMessage {

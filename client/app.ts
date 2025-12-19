@@ -38,8 +38,7 @@ class Mikeylab {
             location: document.querySelector("#location") as HTMLSpanElement,
             map: document.querySelector("#ip-geo-map") as HTMLDivElement,
             colo: document.querySelector("#cf-colo") as HTMLSpanElement,
-            httpTlsVersion: document.querySelector("#http-tls-version") as HTMLSpanElement,
-            botScore: document.querySelector("#bot-score") as HTMLSpanElement
+            httpTlsVersion: document.querySelector("#http-tls-version") as HTMLSpanElement
         },
         request: {
             section: document.querySelector("#request") as HTMLElement,
@@ -208,7 +207,6 @@ class Mikeylab {
         Mikeylab.DOM.ipInfo.location.textContent = ipInfo.loc + ", " + ipInfo.country;
         Mikeylab.DOM.ipInfo.timezone.textContent = ipInfo.tz!;
 
-        Mikeylab.DOM.ipInfo.botScore.textContent = ipInfo.bot!.toString();
         Mikeylab.DOM.ipInfo.colo.textContent = ipInfo.colo!;
         this.curColo = ipInfo.colo;
         Mikeylab.DOM.ipInfo.httpTlsVersion.textContent = Mikeylab.decodeHttpTls(ipInfo.http!, ipInfo.tls!);
