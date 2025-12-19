@@ -5,7 +5,9 @@
     "license": "AGPL-3.0-only",
     "scripts": {
         "build-partial": "cd client && webpack && cd ..",
-        "build": "pnpm build-partial && cd proto && buf generate && cd ..",
+        "install-buf": "tag=$(curl 'https://api.github.com/repos/bufbuild/buf/releases/latest' | jq -r '.tag_name'); url=\"https://github.com/bufbuild/buf/releases/download/${tag}/buf-$(uname -s)-$(uname -m)\"; curl -sSL $url -o 'buf' && chmod +x ./buf",
+        "duplicate-shared": "rm client/lib/bytes-util.ts client/lib/ip-convert.ts client/lib/ua-parse.ts; cp src/lib/bytes-util.ts src/lib/ip-convert.ts src/lib/ua-parse.ts client/lib",
+        "build": "pnpm duplicate-shared; pnpm install-buf && cd proto && ../buf generate && cd ../client && webpack --mode=production && cd ..",
         "deploy": "pnpm build && wrangler deploy",
         "dev": "./dev.sh",
         "start": "pnpm dev",

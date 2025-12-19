@@ -6,3 +6,6 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - workerd
+
+packages:
+  - .
