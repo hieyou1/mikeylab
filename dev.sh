@@ -2,4 +2,4 @@
 set -m
 pnpm build-partial &&
 cd client && webpack watch & 
-wrangler dev; kill %1
+wrangler dev --ip 0.0.0.0; kill %1

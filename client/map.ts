@@ -32,6 +32,8 @@ export class MapHelper {
     private mapSetup: boolean;
     private curLatLng: [number, number] | false = false;
     private locOverlay?: L.SVGOverlay;
+    private cfServer?: L.SVGOverlay;
+    private cfServerCode?: string;
     private staticOverlays: L.SVGOverlay[] = [];
 
     private static genOverlaySVG(svg: SVGName, lat: number, lng: number, multiplier: number = MapHelper.DEFAULT_MULTIPLIER): L.SVGOverlay {
@@ -50,8 +52,13 @@ export class MapHelper {
     }
 
     private async addCfServer(code: string) {
+        if (this.cfServer) {
+            if (code == this.cfServerCode) return;
+            this.cfServer.remove();
+        }
         const overlay = MapHelper.genOverlaySVG("cloud", ...(await (await fetch("/airport?code=" + code)).json() as [number, number]), .3).addTo(this.map);
-        this.staticOverlays.push(overlay);
+        this.cfServer = overlay;
+        this.cfServerCode = code;
     }
 
     public async genMap(lat: number, lng: number, code: string) {
