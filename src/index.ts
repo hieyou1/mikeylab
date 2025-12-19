@@ -95,7 +95,8 @@ app.get("/ip-info", async (c) => {
             "tz": cf.timezone,
             "colo": cf.colo,
             "lat": cf.latitude,
-            "lng": cf.longitude
+            "lng": cf.longitude,
+            "ip": {}
         } as IpInfo;
 
         // #region HTTP & TLS
