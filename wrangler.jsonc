@@ -13,5 +13,11 @@
     },
     "observability": {
         "enabled": true
-    }
+    },
+    "routes": [
+        {
+            "custom_domain": true,
+            "pattern": "mikeylab.com"
+        }
+    ]
 }
