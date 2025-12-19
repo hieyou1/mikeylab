@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package shared.v1;
+
+message Headers {
+  bool gpc = 1;
+  bool dnt = 2;
+  bool upgrade = 3;
+  string languages = 4;
+}

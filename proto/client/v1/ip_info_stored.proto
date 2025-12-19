@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package client.v1;
+
+import "shared/v1/ip_info.proto";
+
+message IpInfoRepr {
+  shared.v1.IpAddresses addresses = 1;
+  shared.v1.IpInfo info = 2;
+}
+
+message IpInfoStored {
+  uint32 id = 1;
+  uint64 date = 2;
+  IpInfoRepr repr = 3;
+}

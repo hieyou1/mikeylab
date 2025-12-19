@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package shared.v1;
+
+import "shared/v1/headers.proto";
+
+enum HttpVersion {
+  HTTP_VERSION_UNSPECIFIED = 0;
+  HTTP_VERSION_1_0 = 1;
+  HTTP_VERSION_1_1 = 2;
+  HTTP_VERSION_2 = 3;
+  HTTP_VERSION_3 = 4;
+}
+
+enum TlsVersion {
+  TLS_VERSION_UNSPECIFIED = 0;
+  TLS_VERSION_1_0 = 1;
+  TLS_VERSION_1_1 = 2;
+  TLS_VERSION_1_2 = 3;
+  TLS_VERSION_1_3 = 4;
+}
+
+message IpAddresses {
+  repeated fixed32 ipv4 = 1;
+  repeated bytes ipv6 = 2;
+}
+
+message IpInfo {
+  oneof ip {
+    fixed32 v4 = 1;
+    bytes v6 = 2;
+  }
+  uint32 asn = 3;
+  optional string asn_name = 4;
+  string tz = 5;
+  optional double lat = 6;
+  optional double lng = 7;
+  string loc = 8;
+  string colo = 9;
+  string country = 10;
+  HttpVersion http = 11;
+  TlsVersion tls = 12;
+  uint32 bot = 13;
+}
+
+message IpInfoMessage {
+  optional IpInfo info = 1;
+  optional Headers headers = 2;
+}

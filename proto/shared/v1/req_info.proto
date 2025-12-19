@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package shared.v1;
+
+import "shared/v1/headers.proto";
+
+message ReqInfo {
+  optional string browser = 1;
+  Headers headers = 2;
+  bool upgrade = 3;
+  bool sw = 4;
+}
+
+message ReqInfoMessage {
+  optional ReqInfo info = 1;
+}

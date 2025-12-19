@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-reqinfo" content="$REQINFO">
+
+    <link rel="stylesheet" href="dist/styles.css">
+    <link $ICON>
+
+    <title>Mikeylab :)</title>
+</head>
+
+<body>
+    <header class="loading">
+        <div class="brand">
+            <img alt="Photo of Mikey" $PFP>
+            <h1>Mikeylab :)</h1>
+        </div>
+        <div id="icons-status">
+            Loading page...
+        </div>
+    </header>
+
+    <main>
+        <section class="center">
+            <p>Hi! I'm Mikey; welcome to my site, and thanks for stopping by! I'm a cybersecurity student who is passionate about engineering more secure systems & software. <noscript>In order to work properly, this site requires JavaScript, and because you don't currently have it enabled things might look a little weird. For more information, see <a href="https://www.enable-javascript.com/" target="_blank">the Enable JavaScript website</a>.</noscript></p>
+        </section>
+
+        <div id="ip-geo-map" style="display: none;"></div>
+
+        <section id="connection">
+            <h2>Connection</h2>
+            <div class="side-by-side">
+                <section id="ip-info">
+                    <div class="imp-data">
+                        <div><span class="data" id="asn-name">???</span></div>
+                        <div><span class="data" id="location">???</span></div>
+                    </div>
+                    <div>ASN: <span class="data" id="asn">?</span></div>
+                    <div>Timezone: <span class="data" id="timezone">?/?</span></div>
+                    <div>HTTP/TLS Version: <span class="data" id="http-tls-version">H?/T?</span></div>
+                    <div>CF Colocation: <span class="data" id="cf-colo">???</span></div>
+                    <div>CF Bot Score: <span class="data" id="bot-score">?</span></div>
+                </section>
+
+                <section id="ip-addr">
+                    <div id="ipv4-container"></div>
+                    <div id="ipv6-container"></div>
+                </section>
+
+                <section id="request">
+                    <div>Browser: <span class="data" id="browser">? v? on ?</span></div>
+                    <div>Privacy Signals: <span class="data" id="privacy">?</span></div>
+                    <div>Languages: <span class="data" id="languages">?</span></div>
+                    <div>HTTPS Upgrade: <span class="data" id="https-upgrade">?</span></div>
+                    <div>Service Worker Active: <span class="data" id="sw-active">?</span></div>
+                </section>
+            </div>
+        </section>
+
+        <section id="history">
+            <h2>History</h2>
+
+            <div id="history-list">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="attrib.html">Attributions</a>
+    </footer>
+
+    <script src="dist/app.js"></script>
+</body>
+
+</html>

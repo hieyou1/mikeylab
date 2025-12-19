@@ -1,0 +1,8 @@
+ignoredBuiltDependencies:
+  - unrs-resolver
+
+onlyBuiltDependencies:
+  - '@bufbuild/buf'
+  - esbuild
+  - sharp
+  - workerd

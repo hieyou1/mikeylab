@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/styles.css">
+    <link rel="icon" href="favicon.png">
+
+    <meta property="og:title" content="Mikeylab :)">
+    <meta property="og:description" content="Hi! I'm Mikey; this is my site! I'm a cybersecurity student who is passionate about engineering more secure systems & software.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="pfp.jpg">
+    <meta property="og:image:alt" content="Photo of Mikey">
+    <meta property="og:url" content="https://mikeylab.com">
+
+    <title>Mikeylab :)</title>
+</head>
+
+<body>
+    <header class="populated">
+        <div class="brand">
+            <img alt="Photo of Mikey" src="pfp.jpg">
+            <h1>Mikeylab :)</h1>
+        </div>
+        <div id="icons-status">
+            <div class="icons">
+                <a target="_blank" href="https://github.com/hieyou1">
+                    <svg class="bi" viewBox="0 0 32 32">
+                        <use xlink:href="dist/icons.svg#github"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://linkedin.com/in/mgevarts">
+                    <svg class="bi" viewBox="0 0 32 32">
+                        <use xlink:href="dist/icons.svg#linkedin"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="mailto:contact@mikeylab.com">
+                    <svg class="bi" viewBox="0 0 32 32">
+                        <use xlink:href="dist/icons.svg#email"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="center">
+            <p>Hi! I'm Mikey; this is my site! I'm a cybersecurity student who is passionate about engineering more secure systems & software.</p>
+            <p>You may notice that things look a little bit wonky. This is because the user agent used on this connection is a known bot. A <a href="/?nobot">non-bot version of this page</a> is also available.</p>
+        </section>
+
+        <div id="ip-geo-map" style="display: none;"></div>
+
+        <section id="connection">
+            <h2>Connection</h2>
+            <div class="side-by-side">
+                <section id="ip-info">
+                    <div class="imp-data">
+                        <div><span class="data" id="asn-name">BOT</span></div>
+                        <div><span class="data" id="location">BOT</span></div>
+                    </div>
+                    <div>ASN: <span class="data" id="asn">BOT</span></div>
+                    <div>Timezone: <span class="data" id="timezone">BOT</span></div>
+                    <div>HTTP/TLS Version: <span class="data" id="http-tls-version">BOT</span></div>
+                    <div>CF Colocation: <span class="data" id="cf-colo">BOT</span></div>
+                    <div>CF Bot Score: <span class="data" id="bot-score">BOT</span></div>
+                </section>
+
+                <section id="ip-addr">
+                    <div id="ipv4-container"></div>
+                    <div id="ipv6-container"></div>
+                </section>
+
+                <section id="request">
+                    <div>Browser: <span class="data" id="browser">BOT</span></div>
+                    <div>Privacy Signals: <span class="data" id="privacy">BOT</span></div>
+                    <div>Languages: <span class="data" id="languages">BOT</span></div>
+                    <div>HTTPS Upgrade: <span class="data" id="https-upgrade">BOT</span></div>
+                    <div>Service Worker Active: <span class="data" id="sw-active">BOT</span></div>
+                </section>
+            </div>
+        </section>
+
+        <section id="history">
+            <h2>History</h2>
+        </section>
+    </main>
+
+    <footer>
+        <a href="attrib.html">Attributions</a>
+    </footer>
+</body>
+
+</html>

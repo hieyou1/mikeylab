@@ -1,0 +1,34 @@
+{
+    "include": [
+        "globals.d.ts",
+        "**/*.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "sourceMap": true,
+        "lib": [
+            "DOM",
+            "es2017"
+        ],
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "target": "es2017",
+        "libReplacement": true,
+        "noUnusedLocals": true,
+        "types": [
+            "webpack",
+            "serviceworker",
+            "leaflet"
+        ]
+    }
+}
