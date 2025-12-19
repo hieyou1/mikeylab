@@ -181,6 +181,7 @@ class Mikeylab {
         this.importMap();
         this.curLat = lat;
         this.curLng = lng;
+        this.curColo = colo;
     }
 
     private parseHeaderInfo(headerInfo: MessageInitShape<typeof HeaderInfoSchema>, first: boolean) {
@@ -208,7 +209,6 @@ class Mikeylab {
         Mikeylab.DOM.ipInfo.timezone.textContent = ipInfo.tz!;
 
         Mikeylab.DOM.ipInfo.colo.textContent = ipInfo.colo!;
-        this.curColo = ipInfo.colo;
         Mikeylab.DOM.ipInfo.httpTlsVersion.textContent = Mikeylab.decodeHttpTls(ipInfo.http!, ipInfo.tls!);
 
         if (ipInfo.lat && ipInfo.lng) {
