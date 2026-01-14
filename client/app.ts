@@ -9,9 +9,10 @@ import { b64ToBytes } from "./lib/bytes-util";
 import { CheckLoop } from "./lib/check-loop";
 import { HistoryManager } from "./lib/history-manager";
 import type { IIPHandler } from "./lib/i-ip-handler";
-import type { MapHelper } from "./map";
-import type { ClientToSWMessage } from "./sw-message";
 import { IPHandler } from "./lib/ip-handler";
+import type { MapHelper } from "./map";
+import type { ProjectManager } from "./projects";
+import type { ClientToSWMessage } from "./sw-message";
 
 enum RefreshIPReason {
     ACTIVATE = 0,
@@ -52,6 +53,9 @@ class Mikeylab {
         history: {
             list: document.querySelector("#history-list") as HTMLDivElement,
         },
+        projects: {
+            section: document.getElementById("projects") as HTMLElement
+        },
         header: document.querySelector("header") as HTMLElement,
         icons: document.querySelector("#icons-status") as HTMLDivElement
     };
@@ -82,12 +86,16 @@ class Mikeylab {
     private readonly iconsElement: HTMLDivElement;
 
     private iconsShown: boolean = false;
-    private importing: boolean = false;
+    private importingMap: boolean = false;
     private swReg: boolean = false;
 
     private readonly checkLoop: CheckLoop;
     private readonly ipHandler: IIPHandler;
     private readonly historyManager: HistoryManager;
+
+    private static ProjectManager?: typeof ProjectManager;
+    private projects?: ProjectManager;
+    private projectImportStarted: boolean = false;
 
     private static decodeHttpTls(http: HttpVersion, tls: TlsVersion): string {
         let httpTlsVersion = "H";
@@ -161,8 +169,8 @@ class Mikeylab {
     }
 
     private async importMap() {
-        if (!this.onLine || this.importing) return;
-        this.importing = true;
+        if (!this.onLine || this.importingMap) return;
+        this.importingMap = true;
 
         // @ts-ignore - webpack will convert the TS extension by itself
         Mikeylab.MapHelper = (await import("./map.ts")).MapHelper;
@@ -170,7 +178,18 @@ class Mikeylab {
         if (this.curLat && this.curLng && this.curColo)
             await this.map.genMap(this.curLat, this.curLng, this.curColo);
 
-        this.importing = false;
+        this.importingMap = false;
+    }
+
+    private async importProjects() {
+        if (!this.onLine || this.projectImportStarted) return;
+        this.projectImportStarted = true;
+
+        // @ts-ignore - webpack will convert the TS extension by itself
+        Mikeylab.ProjectManager = (await import("./projects.ts")).ProjectManager;
+        this.projects = new Mikeylab.ProjectManager(Mikeylab.DOM);
+
+        this.projects.loadProjects();
     }
 
     private async genMap(lat: number, lng: number, colo: string) {
@@ -356,7 +375,7 @@ class Mikeylab {
             this.historyManager.rtcComplete();
         });
 
-        await this.showStatic();
+        await Promise.all([this.showStatic(), this.importProjects()]);
 
         await this.historyManager.ipComplete(ipInfo);
 

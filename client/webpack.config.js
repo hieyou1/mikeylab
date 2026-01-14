@@ -40,6 +40,7 @@ export default (env, argv) => {
         entry: {
             "app": "./app.ts",
             "map": "./map.ts",
+            "projects": "./projects.ts",
             "sw": "./sw.ts"
         },
         devtool: 'source-map',
@@ -80,6 +81,10 @@ export default (env, argv) => {
                     },
                     {
                         from: "icons/**/*",
+                        to: "[name][ext]"
+                    },
+                    {
+                        from: "projects/**/*",
                         to: "[name][ext]"
                     }
                 ]
