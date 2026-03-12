@@ -1,11 +1,11 @@
 import { create as createPb, fromBinary, type MessageInitShape, toBinary } from "@bufbuild/protobuf";
 import { get as getIdb, set as setIdb } from "idb-keyval";
+import { b64ToBytes, bytesToB64 } from "../../shared/bytes-util";
+import { bytesToV6, intToV4 } from "../../shared/ip-convert";
 import type { Mikeylab } from "../app";
 import { type IpInfoRepr, IpInfoReprSchema, IpInfoStoredSchema } from "../gen/client/v1/ip_info_stored_pb";
 import type { IpInfoSchema } from "../gen/shared/v1/ip_info_pb";
-import { b64ToBytes, bytesToB64 } from "./bytes-util";
 import { IIPHandler } from "./i-ip-handler";
-import { bytesToV6, intToV4 } from "./ip-convert";
 
 export class HistoryManager {
     private readonly ipHandler: IIPHandler;
@@ -201,6 +201,7 @@ export class HistoryManager {
         this.mikeylab.live = false;
         this.ipHandler.refresh();
         this.mikeylab.showStatic();
+        this.mikeylab.importProjects();
 
         this.DOM.ipAddr.section.classList.add("static");
         this.DOM.ipInfo.section.classList.add("static");

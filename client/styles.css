@@ -339,6 +339,13 @@ section.unloaded {
     grid-template-columns: 1fr 2fr;
     margin-bottom: 15px;
     gap: 30px;
+
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.project p {
+    margin: 15px auto;
 }
 
 .project div {
@@ -347,6 +354,7 @@ section.unloaded {
 
 .project img {
     object-fit: contain;
+    max-width: 300px;
 }
 
 .project h3 {
@@ -512,6 +520,16 @@ body#attrib section.other>p {
 
     #ip-geo-map {
         height: 300px;
+    }
+
+    .project {
+        display: block;
+    }
+
+    .project img {
+        max-height: 150px;
+        margin: 0 auto;
+        display: block;
     }
 }
 

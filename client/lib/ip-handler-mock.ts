@@ -1,6 +1,6 @@
-import { bytesToB64 } from "./bytes-util";
-import type { IIPHandler } from "./i-ip-handler";
-import { bytesToV6, intToV4, v4ToInt, v6ToBytes } from "./ip-convert";
+import { bytesToB64 } from "../../shared/bytes-util";
+import { bytesToV6, intToV4, v4ToInt, v6ToBytes } from "../../shared/ip-convert";
+import type { IIPHandler } from "./i-ip-handler.d.ts";
 
 export class IPHandlerMock implements IIPHandler {
     private readonly DOM: {

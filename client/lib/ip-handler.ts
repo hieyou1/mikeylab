@@ -1,6 +1,6 @@
-import { bytesToB64 } from "./bytes-util";
+import { bytesToB64 } from "../../shared/bytes-util";
+import { bytesToV6, intToV4, isV4, v4ToInt, v6ToBytes } from "../../shared/ip-convert";
 import type { IIPHandler } from "./i-ip-handler.d.ts";
-import { bytesToV6, intToV4, isV4, v4ToInt, v6ToBytes } from "./ip-convert";
 
 export class IPHandler implements IIPHandler {
     private static readonly ICE_SERVERS = {

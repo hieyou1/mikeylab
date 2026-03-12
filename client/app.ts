@@ -2,10 +2,10 @@
 
 import { fromBinary, type MessageInitShape } from "@bufbuild/protobuf";
 import { get as getIdb, set as setIdb } from "idb-keyval";
+import { b64ToBytes } from "../shared/bytes-util";
 import type { HeadersSchema as HeaderInfoSchema } from "./gen/shared/v1/headers_pb";
 import { HttpVersion, IpInfoMessageSchema, type IpInfoSchema, TlsVersion } from "./gen/shared/v1/ip_info_pb";
 import { ReqInfoMessageSchema } from "./gen/shared/v1/req_info_pb";
-import { b64ToBytes } from "./lib/bytes-util";
 import { CheckLoop } from "./lib/check-loop";
 import { HistoryManager } from "./lib/history-manager";
 import type { IIPHandler } from "./lib/i-ip-handler";
@@ -181,7 +181,7 @@ class Mikeylab {
         this.importingMap = false;
     }
 
-    private async importProjects() {
+    async importProjects() {
         if (!this.onLine || this.projectImportStarted) return;
         this.projectImportStarted = true;
 

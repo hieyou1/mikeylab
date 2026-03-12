@@ -27,7 +27,7 @@ const OSM_ATTRIB = `&copy; <a href="https://www.openstreetmap.org/copyright">Ope
 
 export class MapHelper {
     private static readonly STATIC_OVERLAYS = [["school", 43.0825552, -77.691003]] as Marker[];
-    private static readonly DEFAULT_MULTIPLIER = .1;
+    private static readonly DEFAULT_SIZE = .1;
     private readonly map: LeafletMap;
     private mapSetup: boolean;
     private curLatLng: [number, number] | false = false;
@@ -36,12 +36,12 @@ export class MapHelper {
     private cfServerCode?: string;
     private staticOverlays: L.SVGOverlay[] = [];
 
-    private static genOverlaySVG(svg: SVGName, lat: number, lng: number, multiplier: number = MapHelper.DEFAULT_MULTIPLIER): L.SVGOverlay {
+    private static genOverlaySVG(svg: SVGName, lat: number, lng: number, size: number = MapHelper.DEFAULT_SIZE): L.SVGOverlay {
         const elem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         elem.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         elem.setAttribute("viewBox", "0 0 32 32");
         elem.innerHTML = `<use xlink:href="dist/map.svg#${svg}"></use>`;
-        return L.svgOverlay(elem, [[lat - multiplier, lng - multiplier], [lat + multiplier, lng + multiplier]]);
+        return L.svgOverlay(elem, [[lat - size, lng - size], [lat + size, lng + size]]);
     }
 
     private addStaticOverlays() {
@@ -71,9 +71,11 @@ export class MapHelper {
             }).addTo(this.map);
 
             this.addStaticOverlays();
-            await this.addCfServer(code);
 
             this.map.setView([lat, lng], 8);
+        }
+        if (this.cfServerCode !== code) {
+            await this.addCfServer(code);
         }
         if (this.curLatLng == false || !(lat == this.curLatLng[0] && lng == this.curLatLng[1])) {
             if (this.locOverlay) {

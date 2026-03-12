@@ -3,9 +3,9 @@ declare const self: ServiceWorkerGlobalScope;
 
 import { create as createPb, toBinary } from "@bufbuild/protobuf";
 import { get as getIdb, set as setIdb } from "idb-keyval";
+import { bytesToB64 } from "../shared/bytes-util";
+import parseUA from "../shared/ua-parse";
 import { ReqInfoMessageSchema } from "./gen/shared/v1/req_info_pb";
-import { bytesToB64 } from "./lib/bytes-util";
-import parseUA from "./lib/ua-parse";
 import type { ClientToSWMessage } from "./sw-message.js";
 
 class MikeylabSW {

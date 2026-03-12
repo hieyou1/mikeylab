@@ -5,13 +5,13 @@ import { env } from "cloudflare:workers";
 import createCompress from "compress-brotli";
 import { Hono, HonoRequest } from "hono";
 import { isbot } from "isbot";
+import { b64ToBytes, bytesToB64 } from "../shared/bytes-util";
+import { IncorrectQuartetsError, isV4, v4ToInt, v6ToBytes } from "../shared/ip-convert";
+import parseUA from "../shared/ua-parse";
 import type { HeadersSchema as HeaderInfoSchema } from "./gen/shared/v1/headers_pb";
 import { HttpVersion, type IpInfo, IpInfoMessageSchema, TlsVersion } from "./gen/shared/v1/ip_info_pb";
 import { ReqInfoMessageSchema } from "./gen/shared/v1/req_info_pb";
-import { b64ToBytes, bytesToB64 } from "./lib/bytes-util";
 import type { IataIcao } from "./lib/iata-icao-types";
-import { IncorrectQuartetsError, isV4, v4ToInt, v6ToBytes } from "./lib/ip-convert";
-import parseUA from "./lib/ua-parse";
 
 let INDEX_HTML: string;
 let BOT_SITE: string;

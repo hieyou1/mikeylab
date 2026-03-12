@@ -22,6 +22,9 @@
     },
     "include": [
         "worker-configuration.d.ts",
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "shared/bytes-util.ts",
+        "shared/ip-convert.ts",
+        "shared/ua-parse.ts"
     ]
 }
