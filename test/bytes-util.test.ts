@@ -1,4 +1,4 @@
-import { b64ToBytes, bytesToB64 } from "../src/lib/bytes-util.ts";
+import { b64ToBytes, bytesToB64 } from "../shared/bytes-util.ts";
 
 describe("Bytes to B64", () => {
     it('converts 00', () => {

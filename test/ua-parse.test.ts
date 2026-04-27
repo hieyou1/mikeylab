@@ -1,4 +1,4 @@
-import parseUA, { type Platform, type BrowserName } from "../src/lib/ua-parse";
+import parseUA, { type Platform, type BrowserName } from "../shared/ua-parse";
 
 describe("User-Agent parser", () => {
     it("parses Chrome on Windows", () => {

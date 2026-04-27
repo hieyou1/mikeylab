@@ -1,4 +1,4 @@
-import { v4ToInt, intToV4, v6ToBytes, bytesToV6, isV4 } from "../src/lib/ip-convert";
+import { v4ToInt, intToV4, v6ToBytes, bytesToV6, isV4 } from "../shared/ip-convert";
 
 describe("IP Detector", () => {
     it('detects 2001:db8::1 as v6', () => {
