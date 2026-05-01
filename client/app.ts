@@ -23,6 +23,7 @@ enum RefreshIPReason {
 
 class Mikeylab {
     private static readonly DOM = {
+        smile: document.querySelector("#smile") as HTMLSpanElement,
         meta: {
             reqInfo: document.getElementsByTagName("meta").namedItem("x-reqinfo") as HTMLMetaElement
         },
@@ -236,6 +237,9 @@ class Mikeylab {
 
         Mikeylab.DOM.ipInfo.section.classList.remove("loading");
         Mikeylab.DOM.ipInfo.section.classList.add("populated");
+
+        document.title = "Mikeylab :)";
+        Mikeylab.DOM.smile.textContent = ":)";
     }
 
     async showStatic() {
@@ -299,6 +303,9 @@ class Mikeylab {
             case RefreshIPReason.OFFLINE: {
                 Mikeylab.DOM.header.classList.add("offline");
                 Mikeylab.DOM.icons.textContent = "Offline";
+                document.title = "Mikeylab :(";
+                Mikeylab.DOM.smile.textContent = ":(";
+
                 this.onLine = false;
 
                 this.checkLoop.start();
